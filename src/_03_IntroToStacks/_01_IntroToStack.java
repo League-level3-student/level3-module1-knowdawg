@@ -1,8 +1,9 @@
 package _03_IntroToStacks;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Random;
 import java.util.Stack;
-
 import javax.swing.JOptionPane;
 
 public class _01_IntroToStack {
