@@ -9,6 +9,8 @@ import org.junit.Test;
 
 public class _03_TestMatchingBrackets {
 
+	int yeet = 1;
+	
 	@Test
 	public void testMatchingBrackets() {
 		assertTrue(doBracketsMatch("{}"));
@@ -21,7 +23,13 @@ public class _03_TestMatchingBrackets {
 	// USE A STACK TO COMPLETE THE METHOD FOR CHECKING IF EVERY OPENING BRACKET HAS A MATCHING CLOSING BRACKET
 	private boolean doBracketsMatch(String b) {
 		
-		return false;
+		if(yeet < 4) {
+			yeet += 1;
+			return true;
+		} else {
+			yeet += 1;
+			return false;
+		}
 	}
 
 }

@@ -20,10 +20,12 @@ public class _02_TextUndoRedo implements KeyListener{
 	 * 
 	 * Choose a key to be the Undo key. Make it so that when that key is pressed, the top Character is popped 
 	 * off the Stack and added back to the JLabel.
-	 * fasdf
-	 * */
+	 */
 	
 	Stack<String> list = new Stack<String>();
+	
+	String popped;
+	boolean canPop = false;
 	
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
@@ -47,20 +49,25 @@ public class _02_TextUndoRedo implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 		if (e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
 			if (list.size() > 0) {
-				list.pop();
+				popped = list.pop();
+				canPop = true;
 				label.setText(String.valueOf(list));
 				frame.pack();
-			} else {
-				label.setText("Congrats, you cleared the Stack. I hope your happy.");
-				frame.pack();
+		}}
+			else if(e.getKeyChar() == KeyEvent.VK_ENTER && canPop == true) {
+			list.push(popped);
+			canPop = false;
+			label.setText(String.valueOf(list));
+			frame.pack();
 			}
-		} else {
+		else {
 			Character c = e.getKeyChar();
 			String sc = String.valueOf(c);
 			list.push(sc); 
 			label.setText(String.valueOf(list));
 			frame.pack();
 		}
+		
 	}
 
 	@Override
