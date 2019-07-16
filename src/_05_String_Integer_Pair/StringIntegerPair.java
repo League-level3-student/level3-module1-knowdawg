@@ -1,12 +1,16 @@
 package _05_String_Integer_Pair;
 
+import java.util.ArrayList;
+
 public class StringIntegerPair {
 	//1. create a private array of Strings called keys. Don't initialize it.
-
+	private ArrayList<String> keys;
 	//2. create a private array of integers called values.
-	
+	private ArrayList<String> values;
 	StringIntegerPair(){
 		//3. initialize both member arrays to a length of 0
+		keys = new ArrayList<String>(0);
+		values = new ArrayList<String>(0);
 	}
 	
 	// 4. Complete the steps in the put method
