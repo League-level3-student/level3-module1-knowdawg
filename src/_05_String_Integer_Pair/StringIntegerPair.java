@@ -1,16 +1,18 @@
 package _05_String_Integer_Pair;
 
-import java.util.ArrayList;
+
+
+import java.sql.Array;
 
 public class StringIntegerPair {
 	//1. create a private array of Strings called keys. Don't initialize it.
-	private ArrayList<String> keys;
+	private String[] keys;
 	//2. create a private array of integers called values.
-	private ArrayList<String> values;
+	private Integer[] values;
 	StringIntegerPair(){
 		//3. initialize both member arrays to a length of 0
-		keys = new ArrayList<String>(0);
-		values = new ArrayList<String>(0);
+		keys = new String[0];
+		values = new Integer[0];
 	}
 	
 	// 4. Complete the steps in the put method
@@ -19,10 +21,17 @@ public class StringIntegerPair {
 		//   the passed in String, set the value at that location to the
 		//   passed in value and return from the method.
 		
+		for (int i = 0; i < keys.length; i++) {
+			if(keys[i].equals(key)) {
+				values[i] = value;
+				break;
+			}
+		}
+		
 		//B. create a String array that is one element longer than the keys
-		
-		//C. create an integer array that is one element longer than values
-		
+		String[] newKeys = new String[keys.length + 1];
+		//C. create an Integer array that is one element longer than values
+		Integer[] newValues = new Integer[values.length + 1];
 		//D. set the last element of the new String array to the passed in key
 		
 		//E. set the last element of the new int array to the passed in value
