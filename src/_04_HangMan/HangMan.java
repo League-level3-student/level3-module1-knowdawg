@@ -10,20 +10,16 @@ import javax.swing.JPanel;
 
 public class HangMan implements KeyListener{
 	
+	Utilities wordFinder = new Utilities();
+	String word = wordFinder.readRandomLineFromFile("dictionary.txt");
+	int letters = word.length();
+	
+	
 	int guesses = 13;
 	String strLives = String.valueOf(guesses);
-	
-	String l1 = "_ ";
-	String l2 = "_ ";
-	String l3 = "_ ";
-	String l4 = "_ ";
-	
-	String l1g = "c";
-	String l2g = "o";
-	String l3g = "o";
-	String l4g = "l";
-	
+
 	Stack<String> guess = new Stack<String>();
+	Stack<String> answer = new Stack<String>();
 	
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
@@ -33,12 +29,29 @@ public class HangMan implements KeyListener{
 		HangMan hangman = new HangMan();
 		hangman.run();
 	}
+
 	
 	public void run() {
+		
+		System.out.println(word);
+		System.out.println(letters);
+		
+		for (int i = 0; i < letters; i++) {
+			guess.push("_ ");
+		}
+		
+		for (int i = 0; i < letters; i++) {
+			String charectar = String.valueOf(word.charAt(i));
+			answer.push(charectar);
+		}
+		System.out.println(answer);
+		
+		System.out.println(guess);
+		
 		frame.add(panel);
 		panel.add(label);
 		
-		label.setText(l1 + l2 + l3 + l4 + " guesses: " + guesses);
+		label.setText( guess + " guesses: " + guesses);
 		
 		frame.addKeyListener(this);
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
@@ -51,30 +64,8 @@ public class HangMan implements KeyListener{
 		// TODO Auto-generated method stub
 		Character c = e.getKeyChar();
 		String sc = String.valueOf(c);
-		if(sc.equals(l1g)) {
-			l1 = l1g;
-			label.setText(l1 + l2 + l3 + l4 + " Lives: " + guesses);
-		}
-		if (sc.equals(l2g)) {
-			l2 = l2g;
-			label.setText(l1 + l2 + l3 + l4 + " Lives: " + guesses);
-		}
-		if (sc.equals(l3g)) {
-			l3 = l3g;
-			label.setText(l1 + l2 + l3 + l4 + " Lives: " + guesses);
-		}
-		if (sc.equals(l4g)) {
-			l4 = l4g;
-			label.setText(l1 + l2 + l3 + l4 + " Lives: " + guesses);
-		}
-		guesses -= 1;
-		strLives = String.valueOf(guesses);
-		label.setText(l1 + l2 + l3 + l4 + " Lives: " + guesses);
-		if (guesses == 0) {
-			System.exit(0);
-		}
 		
-
+		
 		
 	}
 
