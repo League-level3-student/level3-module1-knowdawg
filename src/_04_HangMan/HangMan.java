@@ -6,6 +6,7 @@ import java.util.Stack;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class HangMan implements KeyListener{
@@ -15,7 +16,7 @@ public class HangMan implements KeyListener{
 	int letters = word.length();
 	
 	
-	int guesses = 13;
+	int guesses = 18;
 	String strLives = String.valueOf(guesses);
 
 	Stack<String> guess = new Stack<String>();
@@ -33,9 +34,6 @@ public class HangMan implements KeyListener{
 	
 	public void run() {
 		
-		System.out.println(word);
-		System.out.println(letters);
-		
 		for (int i = 0; i < letters; i++) {
 			guess.push("_ ");
 		}
@@ -45,8 +43,6 @@ public class HangMan implements KeyListener{
 			answer.push(charectar);
 		}
 		System.out.println(answer);
-		
-		System.out.println(guess);
 		
 		frame.add(panel);
 		panel.add(label);
@@ -62,8 +58,27 @@ public class HangMan implements KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
+		
 		Character c = e.getKeyChar();
 		String sc = String.valueOf(c);
+		for (int i = 0; i < answer.size(); i++) {
+			
+			if(sc.equals(answer.get(i))) {
+				
+				guess.set(i, answer.get(i));
+			}
+			
+		} 
+		guesses -= 1;
+		label.setText( guess + " guesses: " + guesses);
+		
+		if(guess.equals(answer)) {
+			JOptionPane.showMessageDialog(null, "YOU WIN!");
+			guesses = 0;
+		}
+		if(guesses == 0) {
+			System.exit(0);
+		}
 		
 		
 		
